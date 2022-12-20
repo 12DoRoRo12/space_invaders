@@ -3,6 +3,9 @@ from random import randint
 from pygame import mixer
 pygame.init()
 clock = pygame.time.Clock()
+
+pygame.mouse.set_visible(False)
+
 #ბექგრაუნდის მუსიკა
 mixer.music.load("images/background.wav")
 mixer.music.play(-1)
@@ -103,10 +106,11 @@ font = pygame.font.Font(None, 30)
 def score(player_life, enemy_life):
     text = font.render(f"Pl/En: {player_life}/{enemy_life}", True, (255, 255, 255))
     screen.blit(text, (0, 0))
-font1 = pygame.font.Font(None, 70)
+font1 = pygame.font.Font(None, 90)
 def game_over():
     game_over_text = font1.render("Game Over", True, (255, 255, 255))
-    screen.blit(game_over_text, (270, 300))
+    text_rect = game_over_text.get_rect(center=[width/2, height/2])
+    screen.blit(game_over_text, text_rect)
     pygame.display.update()
     pygame.time.wait(3000)
     pygame.quit()
